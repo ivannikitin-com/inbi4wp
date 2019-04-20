@@ -14,6 +14,11 @@ class Base
 	const META_URL = '_inbi4wp_report_url';
 
 	/**
+	 * @const FIELD_URL Form Field "Report URL"
+	 */
+	const FIELD_URL = 'inbi4wp-report-url';
+
+	/**
 	 * Instance of plugin
 	 */
 	private $plugin;
@@ -50,9 +55,11 @@ class Base
 
 	/**
 	 * Save Metabox Data of Report
+	 * @param int	$post_id	ID of WP Post
 	 */
-	public function metaBoxSave( )
+	public function metaBoxSave( $post_id )
 	{
-		
+		$url = ( isset( $_POST[ self::FIELD_URL ] ) ) ? sanitize_text_field( $_POST[ self::FIELD_URL ] ) : '';
+		update_post_meta( $post_id, self::META_URL, $url );	
 	}
 }

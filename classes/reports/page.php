@@ -17,4 +17,33 @@ class Page extends Base
 	{
 		return __( 'Admin Page Report', Plugin::TEXTDOMAIN );
 	}
+
+	/**
+	 * Constructor
+	 * @param Plugin	$plugin	Plugin instance
+	 */
+	public function __construct( $plugin )
+	{
+		parent::__construct( $plugin );
+
+	}
+
+	/**
+	 * Show Metabox of Report
+	 */
+	public function metaBoxRender()
+	{
+		parent::metaBoxRender();
+		// Show Metabox
+		//include( $this->plugin->dir . 'views/reports/base/metaboxrender.php');
+	}
+
+	/**
+	 * Save Metabox Data of Report
+	 * @param int	$post_id	ID of WP Post
+	 */
+	public function metaBoxSave( $post_id )
+	{
+		parent::metaBoxSave( $post_id );
+	}	
 }

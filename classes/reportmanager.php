@@ -59,6 +59,10 @@ class ReportManager
 		// Register CPT
 		$this->registerCPT();
 
+		// Row actions https://wp-kama.ru/hook/post_row_actions
+		add_filter( 'post_row_actions', array( $this, 'modifyRowActions' ), 10, 2 );
+
+
 		// Add and handle meta_box
 		add_action( 'add_meta_boxes', array( $this, 'metaBoxAdd' ) );
 		add_action( 'save_post', array( $this, 'metaBoxSave' ) );
@@ -146,6 +150,16 @@ class ReportManager
 	}
 
 	/**
+	 * Returns Modified row_actions array
+	 * return @mixed
+	 */
+	public function modifyRowActions( $actions, $post )
+	{
+		unset( $actions[ 'inline hide-if-no-js' ] );
+		return $actions;
+	}
+
+	/**
 	 * Add Metabox of Report
 	 */
 	public function metaBoxAdd()
@@ -163,6 +177,9 @@ class ReportManager
 	{
 		// Nonce field
 		wp_nonce_field( $this->plugin->dir, self::NONCE );
+
+		// current Report Type
+		$reportType = get_post_meta( $this->currentReport->id, self::META_TYPE, true );
 
 		// Show Metabox
 		include( $this->plugin->dir . 'views/reportmanager/metaboxrender.php');
@@ -198,6 +215,7 @@ class ReportManager
 		update_post_meta( $post_id, self::META_TYPE, $reportType );
 
 		// Save Report Specific Data
-		$this->currentReport->metaBoxSave();
+		$this->currentReport->metaBoxSave( $post_id );
 	}
+
 }
