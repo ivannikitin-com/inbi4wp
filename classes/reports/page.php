@@ -9,7 +9,12 @@ use INBI4WP\Plugin as Plugin;
 class Page extends Base
 {
 	/**
-	 * Returns report type title
+	 * @const SLUG	Admin Page Slug
+	 */
+	const SLUG = 'inbi4wp_report_';	
+	
+	/**
+	 * Returns Report Type Title
 	 * @static
 	 * @return string
 	 */
@@ -17,6 +22,19 @@ class Page extends Base
 	{
 		return __( 'Admin Page Report', Plugin::TEXTDOMAIN );
 	}
+	
+	/**
+	 * Returns Report URL by ID
+	 * @static
+	 * @param int	$id	Report ID
+	 * @return string
+	 */
+	static public function getURL( $id )
+	{
+		return '';
+	}
+	
+	
 
 	/**
 	 * Constructor

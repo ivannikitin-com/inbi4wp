@@ -28,6 +28,11 @@ class ReportManager
 	const FIELD_TYPE = 'inbi4wp-report-type';
 	
 	/**
+	 * @const COLUMN_TYPE Table column "Type of Report"
+	 */
+	const COLUMN_TYPE = 'type';	
+	
+	/**
 	 * Instance of plugin
 	 */
 	private $plugin;	
@@ -66,6 +71,10 @@ class ReportManager
 		// Add and handle meta_box
 		add_action( 'add_meta_boxes', array( $this, 'metaBoxAdd' ) );
 		add_action( 'save_post', array( $this, 'metaBoxSave' ) );
+		
+		// Add and handle table column
+		add_filter( 'manage_' . self::CPT . '_posts_columns',  array( $this, 'tableColumnAdd' ) );
+		add_action( 'manage_' . self::CPT . '_posts_custom_column', array( $this, 'tableColumnRender' ), 10, 2 );
 
 		// Current Report
 		$this->currentReport = $this->getReport();
@@ -218,4 +227,29 @@ class ReportManager
 		$this->currentReport->metaBoxSave( $post_id );
 	}
 
+	/**
+	 * Add new column
+	 * @param mixed	$columns	Array of Columns
+	 */
+	public function tableColumnAdd( $columns )
+	{
+		unset( $columns[ 'date' ] );
+		$columns[ self::COLUMN_TYPE ] = __( 'Report Type', Plugin::TEXTDOMAIN );
+		$columns[ 'date' ] = __( 'Report Date', Plugin::TEXTDOMAIN );
+		return $columns;
+	}
+	
+	/**
+	 * Show data in new column
+	 * @param string	$column_name	column name
+	 * @param int	$post_id	Post ID
+	 */
+	public function tableColumnRender( $column_name, $post_id )
+	{
+		if( $column_name === self::COLUMN_TYPE )
+		{
+			$reportType = get_post_meta( $post_id, self::META_TYPE, true );
+			echo esc_html( $this->reportTypes[ $reportType ] );
+		}
+	}	
 }
