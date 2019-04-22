@@ -78,6 +78,9 @@ class ReportManager
 
 		// Current Report
 		$this->currentReport = $this->getReport();
+		
+		// Init for some slacces
+		Reports\Page::init();
 	}
 	
 	/**
