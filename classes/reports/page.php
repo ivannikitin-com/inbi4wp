@@ -78,7 +78,23 @@ class Page extends Base
 	 */
 	static public function showReport()
 	{
+		if ( ! isset( $_GET[ 'page' ] ) )
+			return;
 		
+		$page = sanitize_key( $_GET[ 'page' ] );
+		$id = (int) str_replace( self::SLUG, '', $page ); 
+		$url = get_post_meta( $id, Base::META_URL, true );
+		
+		if ( $url )
+		{
+			echo '<iframe width="600" height="250" ' . 
+				'src="' . $url . '" ' . 
+				'frameborder="0" style="border:0" allowfullscreen></iframe>';
+		}
+		else
+		{
+			
+		}
 	}
 	
 	/**

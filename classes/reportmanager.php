@@ -168,6 +168,19 @@ class ReportManager
 	public function modifyRowActions( $actions, $post )
 	{
 		unset( $actions[ 'inline hide-if-no-js' ] );
+		
+		$reportType = get_post_meta( $post->ID, self::META_TYPE, true );
+		try
+		{
+			$actions[ 'view' ] = '<a href="' . $reportType::getURL( $post->ID ) . '" rel="bookmark"' . 
+				'aria-label="' . esc_attr( $post->title ) .  '">' . 
+				esc_html__( 'View Report', Plugin::TEXTDOMAIN ) . '</a>';
+		}
+		catch ( \Extension $ex)
+		{
+			unset( $actions[ 'view' ] );
+		}
+		
 		return $actions;
 	}
 
