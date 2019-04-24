@@ -20,4 +20,4 @@ require( 'classes/reports/base.php' );
 require( 'classes/reports/page.php' );
 
 /* Run plugin */
-new \INBI4WP\Plugin( plugin_dir_path( __FILE__ ) );
+\INBI4WP\Plugin::get( plugin_dir_path( __FILE__ ) );

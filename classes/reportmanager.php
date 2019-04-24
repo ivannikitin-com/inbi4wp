@@ -33,11 +33,6 @@ class ReportManager
 	const COLUMN_TYPE = 'type';	
 	
 	/**
-	 * Instance of plugin
-	 */
-	private $plugin;	
-	
-	/**
 	 * Array of avaliable report types and classes
 	 */
 	private $reportTypes;
@@ -49,13 +44,9 @@ class ReportManager
 
 	/**
 	 * Constructor
-	 * @param Plugin	$plugin	Plugin instance
 	 */
-	public function __construct( $plugin )
+	public function __construct()
 	{
-		// Save plugin instance
-		$this->plugin = $plugin;
-
 		// Avaliable report types and classes
 		$this->reportTypes = array(
 			'\INBI4WP\Reports\Page'	=>	Reports\Page::getTitle(),
@@ -79,8 +70,11 @@ class ReportManager
 		// Current Report
 		$this->currentReport = $this->getReport();
 		
-		// Init for some slacces
-		Reports\Page::init();
+		// Init reports classes
+		foreach ( array_keys( $this->reportTypes ) as $class )
+		{
+			$class::init();
+		}
 	}
 	
 	/**
@@ -152,13 +146,13 @@ class ReportManager
 			$class = get_post_meta( $id, self::META_TYPE, true );
 			if ( !empty( $class ) && array_key_exists( $class, $this->reportTypes ) )
 			{
-				return new $class( $this->plugin );
+				return new $class( $id );
 			}
 		}
 		
 		// Create New Report
 		$class = array_keys( $this->reportTypes )[0];
-		return new $class( $this->plugin );
+		return new $class();
 	}
 
 	/**
@@ -201,20 +195,20 @@ class ReportManager
 	public function metaBoxRender()
 	{
 		// Nonce field
-		wp_nonce_field( $this->plugin->dir, self::NONCE );
+		wp_nonce_field( Plugin::get()->dir, self::NONCE );
 
 		// current Report Type
 		$reportType = get_post_meta( $this->currentReport->id, self::META_TYPE, true );
 
 		// Show Metabox
-		include( $this->plugin->dir . 'views/reportmanager/metaboxrender.php');
+		include( Plugin::get()->dir . 'views/reportmanager/metaboxrender.php');
 		
 		// Show Report Metabox
 		$this->currentReport->metaBoxRender();
 	}
 
 	/**
-	 * Save Metabox Data of Report
+	 * Save Metabox Data of Report НЕ РАБОТАЕТ!!!!
 	 * @param int	$post_id	ID of WP Post
 	 */
 	public function metaBoxSave( $post_id )
@@ -224,7 +218,7 @@ class ReportManager
 			return;
 
 		// Nonce verification
-		if ( ! wp_verify_nonce( $_POST[ self::NONCE ], $this->plugin->dir ) )
+		if ( ! wp_verify_nonce( $_POST[ self::NONCE ], Plugin::get()->dir->dir ) )
 			return;
 	
 		// Is it autosave?

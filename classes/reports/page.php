@@ -1,7 +1,7 @@
 <?php
 /**
  * Google Data Studio Reports For WordPress
- * Class Plugin
+ * Class Page
  */
 namespace INBI4WP\Reports;
 use INBI4WP\Plugin as Plugin;
@@ -82,19 +82,9 @@ class Page extends Base
 			return;
 		
 		$page = sanitize_key( $_GET[ 'page' ] );
-		$id = (int) str_replace( self::SLUG, '', $page ); 
-		$url = get_post_meta( $id, Base::META_URL, true );
-		
-		if ( $url )
-		{
-			echo '<iframe width="600" height="250" ' . 
-				'src="' . $url . '" ' . 
-				'frameborder="0" style="border:0" allowfullscreen></iframe>';
-		}
-		else
-		{
-			
-		}
+		$id = (int) str_replace( self::SLUG, '', $page );
+		$report = new static( $id );
+		$report->reportRender();
 	}
 	
 	/**
@@ -146,11 +136,11 @@ class Page extends Base
 
 	/**
 	 * Constructor
-	 * @param Plugin	$plugin	Plugin instance
+	 * @param int	$id	ID of Report
 	 */
-	public function __construct( $plugin )
+	public function __construct( $id = 0)
 	{
-		parent::__construct( $plugin );
+		parent::__construct( $id );
 
 	}
 
@@ -172,5 +162,20 @@ class Page extends Base
 	{
 		parent::metaBoxSave( $post_id );
 		wp_cache_delete( self::CACHE_REPORTS );
-	}	
+	}
+	
+	/**
+	 * Show report
+	 */
+	public function reportRender()
+	{
+		if ( ! empty( $this->url ) )
+		{
+			include( Plugin::get()->dir . 'views/reports/page/reportrender.php' );
+		}
+		else
+		{
+			esc_html_e( 'Warning! Report URL is empty!', Plugin::TEXTDOMAIN );
+		}
+	}
 }

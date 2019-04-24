@@ -19,11 +19,6 @@ class Base
 	const FIELD_URL = 'inbi4wp-report-url';
 
 	/**
-	 * Instance of plugin
-	 */
-	private $plugin;
-
-	/**
 	 * Report ID
 	 */
 	public $id;
@@ -35,13 +30,13 @@ class Base
 
 	/**
 	 * Constructor
-	 * @param Plugin	$plugin	Plugin instance
+	 * @param int	$id	ID отчета
 	 */
-	public function __construct( $plugin )
+	public function __construct( $id = 0 )
 	{
-		$this->plugin = $plugin;		
-		$this->id = (int) sanitize_key( $_GET['post'] );
-		$this->url = get_post_meta( $this->id, self::META_URL, true );
+		$this->id = $id;
+		$this->url = ( $this->id > 0 ) ? get_post_meta( $this->id, self::META_URL, true ) : '';
+		var_dump( $this->id, $this->url );
 	}
 
 	/**
@@ -50,7 +45,7 @@ class Base
 	public function metaBoxRender()
 	{
 		// Show Metabox
-		include( $this->plugin->dir . 'views/reports/base/metaboxrender.php');
+		include( Plugin::get()->dir . 'views/reports/base/metaboxrender.php');
 	}
 
 	/**

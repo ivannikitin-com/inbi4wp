@@ -15,7 +15,13 @@ class Plugin
 	/**
 	 * @const LANG Translations folder
 	 */
-	const LANG = 'languages';	
+	const LANG = 'languages';
+	
+    /**
+     * @var Plugin
+     */
+    private static $instance;	
+	
 	
 	/**
 	 * Plugin folder
@@ -28,12 +34,25 @@ class Plugin
 	 * @var string
 	 */
 	public $reportManager;	
+
+    /**
+     * Gets the instance via lazy initialization (created on first usage)
+	 * @param string $pluginDir	plugin folder. Must be specified at the first call ! 
+     */
+    public static function get( $pluginDir = '' ): Plugin
+    {
+        if (null === static::$instance) {
+            static::$instance = new static( $pluginDir );
+        }
+
+        return static::$instance;
+    }
 	
 	/**
 	 * Constructor
 	 * @param string	$pluginDir	Plugin Folder
 	 */
-	public function __construct( $pluginDir )
+	private function __construct( $pluginDir )
 	{
 		$this->dir = $pluginDir;
 		add_action( 'plugins_loaded', array( $this, 'loadTextDomain' ) );
@@ -56,7 +75,7 @@ class Plugin
 		// Run plugin only in admin area
 		if( is_admin() )
 		{
-			$this->reportManager = new ReportManager( $this );
+			$this->reportManager = new ReportManager();
 		}
 	}
 }
