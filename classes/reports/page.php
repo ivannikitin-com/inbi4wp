@@ -132,27 +132,6 @@ class Page extends Base
 		wp_cache_set( self::CACHE_REPORTS, $reports );
 		return $reports;
 	}
-	
-
-	/**
-	 * Constructor
-	 * @param int	$id	ID of Report
-	 */
-	public function __construct( $id = 0)
-	{
-		parent::__construct( $id );
-
-	}
-
-	/**
-	 * Show Metabox of Report
-	 */
-	public function metaBoxRender()
-	{
-		parent::metaBoxRender();
-		// Show Metabox
-		//include( $this->plugin->dir . 'views/reports/base/metaboxrender.php');
-	}
 
 	/**
 	 * Save Metabox Data of Report
@@ -175,7 +154,9 @@ class Page extends Base
 		}
 		else
 		{
+			echo '<h2>'; 
 			esc_html_e( 'Warning! Report URL is empty!', Plugin::TEXTDOMAIN );
+			echo '</h2>';
 		}
 	}
 }

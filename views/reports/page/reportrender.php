@@ -5,4 +5,10 @@
 namespace INBI4WP\Reports;
 use INBI4WP\Plugin as Plugin;
 ?>
-<iframe src="{$this->url}" width="600" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe 
+	src="<?php echo $this->url ?>" 
+	width="<?php echo $this->width ?>" 
+	height="<?php echo $this->height ?>" 
+	frameborder="0" 
+	style="border:0" 
+	allowfullscreen></iframe>

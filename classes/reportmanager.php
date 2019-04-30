@@ -55,10 +55,6 @@ class ReportManager
 		// Register CPT
 		$this->registerCPT();
 
-		// Row actions https://wp-kama.ru/hook/post_row_actions
-		add_filter( 'post_row_actions', array( $this, 'modifyRowActions' ), 10, 2 );
-
-
 		// Add and handle meta_box
 		add_action( 'add_meta_boxes', array( $this, 'metaBoxAdd' ) );
 		add_action( 'save_post', array( $this, 'metaBoxSave' ) );
@@ -66,6 +62,16 @@ class ReportManager
 		// Add and handle table column
 		add_filter( 'manage_' . self::CPT . '_posts_columns',  array( $this, 'tableColumnAdd' ) );
 		add_action( 'manage_' . self::CPT . '_posts_custom_column', array( $this, 'tableColumnRender' ), 10, 2 );
+		
+		
+		// Report permalink
+		add_filter( 'post_link', array( $this, 'getPermalink' ), 10, 3 );
+
+		// Row actions https://wp-kama.ru/hook/post_row_actions
+		add_filter( 'post_row_actions', array( $this, 'modifyRowActions' ), 10, 2 );		
+		
+		// Post updated messages
+		add_filter( 'post_updated_messages', array( $this, 'getUpdatedMessges' ) );
 
 		// Current Report
 		$this->currentReport = $this->getReport();
@@ -132,35 +138,58 @@ class ReportManager
 		);
 		register_post_type( self::CPT, $args );
 	}
+	
+	/**
+	 * Check the type of post. True if this is report
+	 * @param int $id	ID of post
+	 * @return bool
+	 */
+	private function isReport( $id )
+	{
+		return get_post_type( $id ) == self::CPT;
+	}
 
 	/**
 	 * Returns the instance of Report Object
-	 * return Reports\Base
+	 * @param int $id	ID of report if specified
+	 * @return Reports\Base
 	 */
-	public function getReport()
+	public function getReport( $id = 0 )
 	{
-		// Read Existing Report
-		if ( $_GET['action'] == 'edit' && isset( $_GET['post'] ) )
+		// What is my ID
+		if ( empty( $id ) )
 		{
-			$id = (int) sanitize_key( $_GET['post'] );
+			// Try to get params on edit page
+			if ( $_GET['action'] == 'edit' && isset( $_GET['post'] ) )
+			{
+				$id = (int) sanitize_key( $_GET['post'] );
+			}
+		}
+		
+		// What is my class
+		if ( ! empty( $id ) )
+		{
 			$class = get_post_meta( $id, self::META_TYPE, true );
 			if ( !empty( $class ) && array_key_exists( $class, $this->reportTypes ) )
 			{
 				return new $class( $id );
-			}
+			}			
 		}
 		
-		// Create New Report
+		// Create new default report
 		$class = array_keys( $this->reportTypes )[0];
-		return new $class();
+		return new $class( $id );
 	}
 
 	/**
 	 * Returns Modified row_actions array
-	 * return @mixed
+	 * @return @mixed
 	 */
 	public function modifyRowActions( $actions, $post )
 	{
+		if ( ! $this->isReport( $post->ID ) )
+			return $actions;
+		
 		unset( $actions[ 'inline hide-if-no-js' ] );
 		
 		$reportType = get_post_meta( $post->ID, self::META_TYPE, true );
@@ -176,6 +205,55 @@ class ReportManager
 		}
 		
 		return $actions;
+	}
+	
+	/**
+	 * Returns permalink for reports
+	 * @param string	$permalink	The permalink
+	 * @param WP_Post	$post		The post
+	 * @param string	$leavename	Whether to keep the post name
+	 * @return string
+	 */
+	public function getPermalink( $permalink, $post, $leavename )
+	{
+		if ( ! $this->isReport( $post->ID ) )
+			return $permalink;
+		
+		$reportType = get_post_meta( $post->ID, self::META_TYPE, true );
+		return esc_url( $reportType::getURL( $post->ID ) );
+	}
+	
+	/**
+	 * Modify post updated messages
+	 * https://wordpress.stackexchange.com/questions/15357/edit-the-post-updated-view-post-link
+	 * @param array $messages The default WordPress messages
+	 * @return mixed
+	 */
+	public function getUpdatedMessges( $messages )
+	{
+		global $post, $post_ID;
+		
+		if ( ! $this->isReport( $post_ID ) )
+			return $messages;
+
+		$reportType = get_post_meta( $post_ID, self::META_TYPE, true );
+		$url = esc_url( $reportType::getURL( $post_ID ) );	
+		
+		$messages[ self::CPT ] = array(
+			0  => '', // Unused. Messages start at index 1.
+			1  => sprintf( __( 'Report updated. <a href="%s">View report</a>', Plugin::TEXTDOMAIN ), $url ),
+			2  => __( 'Custom field updated.', Plugin::TEXTDOMAIN ),
+			3  => __( 'Custom field deleted.', Plugin::TEXTDOMAIN ),
+			4  => __( 'Report updated.', Plugin::TEXTDOMAIN ),
+			5  => isset( $_GET['revision']) ? sprintf( __( 'Report restored to revision from %s', Plugin::TEXTDOMAIN ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6  => sprintf( __( 'Report published. <a href="%s">View report</a>', Plugin::TEXTDOMAIN ), $url ),
+			7  => __( 'Report saved.',Plugin::TEXTDOMAIN ),
+			8  => sprintf( __( 'Report submitted. <a target="_blank" href="%s">Preview report</a>', Plugin::TEXTDOMAIN), $url ),
+			9  => sprintf( __( 'Report scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview report</a>', Plugin::TEXTDOMAIN), date_i18n( __( 'M j, Y @ G:i', Plugin::TEXTDOMAIN ), strtotime( $post->post_date ) ), $url ),
+			10 => sprintf( __( 'Report draft updated. <a target="_blank" href="%s">Preview report</a>', Plugin::TEXTDOMAIN), $url ),
+		);
+
+		return $messages;		
 	}
 
 	/**
@@ -212,13 +290,13 @@ class ReportManager
 	 * @param int	$post_id	ID of WP Post
 	 */
 	public function metaBoxSave( $post_id )
-	{
+	{	
 		// Have we our fields?
 		if ( ! isset( $_POST[ self::FIELD_TYPE ] ) )
 			return;
 
 		// Nonce verification
-		if ( ! wp_verify_nonce( $_POST[ self::NONCE ], Plugin::get()->dir->dir ) )
+		if ( ! wp_verify_nonce( $_POST[ self::NONCE ], Plugin::get()->dir ) )
 			return;
 	
 		// Is it autosave?
@@ -234,6 +312,7 @@ class ReportManager
 		update_post_meta( $post_id, self::META_TYPE, $reportType );
 
 		// Save Report Specific Data
+		$this->currentReport = $this->getReport( $post_id );
 		$this->currentReport->metaBoxSave( $post_id );
 	}
 
