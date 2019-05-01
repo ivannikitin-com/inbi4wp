@@ -1,14 +1,14 @@
 <?php
 /**
  * Google Data Studio Reports For WordPress
- * Class Wellcome implements reports as dashboard Wellcome widget
+ * Class Wellcome implements reports as dashboard Welcome widget
  * https://www.wpexplorer.com/custom-wordpress-welcome-message/
  */
 namespace INBI4WP\Reports;
 use INBI4WP\Plugin as Plugin;
 use INBI4WP\ReportManager as ReportManager;
 
-class Wellcome extends Base
+class Welcome extends Base
 {
 	/**
 	 * @const DEFAULT_HEIGHT Default of Report Height
@@ -22,7 +22,7 @@ class Wellcome extends Base
 	 */
 	static public function getTitle()
 	{
-		return __( 'Dashboard Wellcome Report', Plugin::TEXTDOMAIN );
+		return __( 'Dashboard Welcome Report', Plugin::TEXTDOMAIN );
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class Wellcome extends Base
 	 */
 	static public function init()
 	{
-		// Have we Dashboard Wellcome reports?
+		// Have we Dashboard Welcome reports?
 		$reports = Base::getAllReport( __CLASS__ );
 		if ( ! empty( $reports ) ) 
 		{

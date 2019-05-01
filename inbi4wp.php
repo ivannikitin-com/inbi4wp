@@ -19,7 +19,7 @@ require( 'classes/reportmanager.php' );
 require( 'classes/reports/base.php' );
 require( 'classes/reports/page.php' );
 require( 'classes/reports/dashboardwidget.php' );
-require( 'classes/reports/wellcome.php' );
+require( 'classes/reports/welcome.php' );
 
 /* Run plugin */
 \INBI4WP\Plugin::get( plugin_dir_path( __FILE__ ) );
