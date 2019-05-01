@@ -79,21 +79,4 @@ class Page extends Base
 		$report = new static( $id );
 		$report->reportRender();
 	}
-	
-	/**
-	 * Show report
-	 */
-	public function reportRender()
-	{
-		if ( ! empty( $this->url ) )
-		{
-			include( Plugin::get()->dir . 'views/reports/page/reportrender.php' );
-		}
-		else
-		{
-			echo '<h2>'; 
-			esc_html_e( 'Warning! Report URL is empty!', Plugin::TEXTDOMAIN );
-			echo '</h2>';
-		}
-	}
 }

@@ -184,4 +184,22 @@ class Base
 		// Clear report caches
 		wp_cache_delete( self::CACHE_REPORTS );		
 	}
+	
+	/**
+	 * Show report
+	 */
+	public function reportRender()
+	{
+		if ( ! empty( $this->url ) )
+		{
+			$view = 'views/' . str_replace( '\\', '/', str_replace( 'inbi4wp\\', '', strtolower( get_class( $this ) ) ) ) . '/reportrender.php';
+			include( Plugin::get()->dir . $view );
+		}
+		else
+		{
+			echo '<h2>'; 
+			esc_html_e( 'Warning! Report URL is empty!', Plugin::TEXTDOMAIN );
+			echo '</h2>';
+		}
+	}	
 }
