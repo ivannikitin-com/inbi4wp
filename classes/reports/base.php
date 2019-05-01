@@ -1,10 +1,12 @@
 <?php
 /**
  * Google Data Studio Reports For WordPress
- * Class Plugin
+ * Class Base implements basic capabilities for all reports
  */
 namespace INBI4WP\Reports;
 use INBI4WP\Plugin as Plugin;
+use INBI4WP\ReportManager as ReportManager;
+use \WP_Query as WP_Query;
 
 class Base
 {
@@ -46,7 +48,13 @@ class Base
 	/**
 	 * @const FIELD_HEIGHT Form Field "Report height"
 	 */
-	const FIELD_HEIGHT = 'inbi4wp-report-height';	
+	const FIELD_HEIGHT = 'inbi4wp-report-height';
+	
+	/**
+	 * @const CACHE_REPORTS	cache reports array
+	 */
+	const CACHE_REPORTS = 'inbi4wp_cache_report_ids';	
+	
 
 	/**
 	 * Report ID
@@ -70,8 +78,69 @@ class Base
 	
 
 	/**
+	 * Returns ids of all reports by report type
+	 * @static
+	 * @param string	$reportType		Type of report
+	 * @return mixed
+	 */
+	static public function getAllReport( $reportType )
+	{
+		// Add \ in the begin of $reportType
+		if ( $reportType{0} !== '\\' )
+			$reportType = '\\' . $reportType;
+		
+		// Check the cache
+		$reports = wp_cache_get( self::CACHE_REPORTS );
+		if ( $reports && isset( $reports[ $reportType ] ) )
+			return $reports[ $reportType ];		
+		
+		// New report types array
+		if ( ! is_array( $reports ) )
+			$reports = array();
+		
+		// WP_Query arguments
+		$args = array(
+			'post_type'		=> array( ReportManager::CPT ),
+			'orderby'		=> 'menu_order',
+			'meta_query'	=> array(
+				array(
+					'key'	=> ReportManager::META_TYPE,
+					'value'	=> $reportType,
+				),
+			),
+			'nopaging'					=> true,
+			'cache_results'				=> true,
+			'update_post_meta_cache'	=> true,
+		);
+
+		// The Query
+		$query = new WP_Query( $args );
+		
+		// Populate array
+		$reportsIds = array();
+		if ( $query->posts )
+		{
+			foreach ($query->posts as $post)
+			{
+				$reportsIds[] = array(
+					'id'	=> $post->ID,
+					'title'	=> $post->post_title,
+				);
+			}			
+		}
+		
+		// Cache results
+		$reports[ $reportType ] = $reportsIds;
+		wp_cache_set( self::CACHE_REPORTS, $reports );
+		
+		// Results
+		return $reportsIds;
+	}
+
+
+	/**
 	 * Constructor
-	 * @param int	$id	ID отчета
+	 * @param int	$id		Report ID 
 	 */
 	public function __construct( $id = 0 )
 	{
@@ -110,6 +179,9 @@ class Base
 		update_post_meta( $post_id, self::META_WIDTH, $width );
 		
 		$height = ( isset( $_POST[ self::FIELD_HEIGHT ] ) ) ? sanitize_text_field( $_POST[ self::FIELD_HEIGHT ] ) : static::DEFAULT_HEIGHT;
-		update_post_meta( $post_id, self::META_HEIGHT, $height );		
+		update_post_meta( $post_id, self::META_HEIGHT, $height );
+
+		// Clear report caches
+		wp_cache_delete( self::CACHE_REPORTS );		
 	}
 }

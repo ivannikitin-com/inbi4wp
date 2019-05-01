@@ -1,7 +1,7 @@
 <?php
 /**
  * Google Data Studio Reports For WordPress
- * Class ReportManager
+ * Class ReportManager implements report management
  */
 namespace INBI4WP;
 
@@ -236,7 +236,14 @@ class ReportManager
 		if ( ! $this->isReport( $post_ID ) )
 			return $messages;
 
+		// Read report type
 		$reportType = get_post_meta( $post_ID, self::META_TYPE, true );
+		
+		// If this is new report...
+		if ( empty( $reportType ) )
+			return $messages;
+		
+		// Report URL
 		$url = esc_url( $reportType::getURL( $post_ID ) );	
 		
 		$messages[ self::CPT ] = array(
