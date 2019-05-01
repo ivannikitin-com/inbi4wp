@@ -51,6 +51,7 @@ class ReportManager
 		$this->reportTypes = array(
 			'\INBI4WP\Reports\Page'				=>	Reports\Page::getTitle(),
 			'\INBI4WP\Reports\DashboardWidget'	=>	Reports\DashboardWidget::getTitle(),
+			'\INBI4WP\Reports\Wellcome'			=>	Reports\Wellcome::getTitle(),
 		);
 
 		// Register CPT

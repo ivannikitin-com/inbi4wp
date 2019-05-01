@@ -70,7 +70,7 @@ class DashboardWidget extends Base
 	}
 
 	/**
-	 * Show Report Widdet
+	 * Show Report Widget
 	 * @param string	$var	The args are stored in the 2nd variable passed to callback function
 	 * @param mixed		$args	Callback args
 	 * @static
