@@ -35,7 +35,7 @@ class ReportManager
 	/**
 	 * Array of avaliable report types and classes
 	 */
-	private $reportTypes;
+	public $reportTypes;
 
 	/**
 	 * Current Report
@@ -79,6 +79,7 @@ class ReportManager
 		$this->currentReport = $this->getReport();
 		
 		// Init reports classes
+		Reports\Base::init();
 		foreach ( array_keys( $this->reportTypes ) as $class )
 		{
 			$class::init();

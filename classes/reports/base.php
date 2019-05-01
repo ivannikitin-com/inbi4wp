@@ -74,8 +74,17 @@ class Base
 	/**
 	 * Report height
 	 */
-	public $height;	
+	public $height;
 	
+	/**
+	 * Handle the init WP event
+	 * Need for add hooks
+	 * @static
+	 */
+	static public function init()
+	{
+		add_action( 'admin_enqueue_scripts', __CLASS__ . '::addJSData' );
+	}
 
 	/**
 	 * Returns ids of all reports by report type
@@ -136,6 +145,24 @@ class Base
 		// Results
 		return $reportsIds;
 	}
+
+	/**
+	 * Add some reports data to JS view
+	 * @static
+	 */
+	static public function addJSData()
+	{
+		$reportsData = array();
+		foreach ( Plugin::get()->reportManager->reportTypes as $reportClass => $reportTitle )
+		{
+			$reportsData[ $reportClass ] = array(
+				'title' 		=> $reportTitle,
+				'defaultWidth'	=> $reportClass::DEFAULT_WIDTH,
+				'defaultHeight'	=> $reportClass::DEFAULT_HEIGHT,
+			);
+		}
+		wp_localize_script( 'jquery', 'inbi4wp_reportsData', $reportsData );
+	}		
 
 
 	/**

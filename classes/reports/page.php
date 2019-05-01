@@ -37,7 +37,7 @@ class Page extends Base
 	
 	/**
 	 * Handle the init WP event
-	 * Need for add hook to admin_meny
+	 * Need for add hook to admin_menu
 	 * @static
 	 */
 	static public function init()
