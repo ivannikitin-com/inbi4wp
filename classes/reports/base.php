@@ -156,14 +156,12 @@ class Base
 		foreach ( Plugin::get()->reportManager->reportTypes as $reportClass => $reportTitle )
 		{
 			$reportsData[ $reportClass ] = array(
-				'title' 		=> $reportTitle,
 				'defaultWidth'	=> $reportClass::DEFAULT_WIDTH,
 				'defaultHeight'	=> $reportClass::DEFAULT_HEIGHT,
 			);
 		}
 		wp_localize_script( 'jquery', 'inbi4wp_reportsData', $reportsData );
-	}		
-
+	}
 
 	/**
 	 * Constructor

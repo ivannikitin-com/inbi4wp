@@ -23,7 +23,6 @@ use INBI4WP\ReportManager as ReportManager;
 
 <script>
 jQuery(function($){
-	console.log('Reports\Base::metaBoxRender view');
 	// Select onchange
 	$('#<?php echo ReportManager::FIELD_TYPE ?>').on('change', function(){
 		var option = this.options[this.selectedIndex].value;
