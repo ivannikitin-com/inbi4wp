@@ -1,0 +1,331 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: IN BI For WP: Google Data Studio Reports For WordPress\n"
+"POT-Creation-Date: 2019-05-02 15:15+0300\n"
+"PO-Revision-Date: 2019-05-02 15:14+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: inbi4wp.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classes/installer.php:72
+msgctxt "URL Demo Welcome Site Stats"
+msgid ""
+"https://datastudio.google.com/embed/"
+"reporting/1VBoRCoJSOUbTZECO68GC2CJxJb8Q51et/page/qDTo"
+msgstr ""
+
+#: classes/installer.php:73
+msgid "Demo Welcome Site Stats"
+msgstr ""
+
+#: classes/installer.php:77
+msgctxt "URL Demo Site Usage Report"
+msgid ""
+"https://datastudio.google.com/embed/"
+"reporting/1Hsn7UlMla3RpNWkkLb3Q-0VvZhHlvaGo/page/UGXo"
+msgstr ""
+
+#: classes/installer.php:78
+msgid "Demo Site Usage Report"
+msgstr ""
+
+#: classes/installer.php:82
+msgctxt "URL Demo Marketing Report"
+msgid ""
+"https://datastudio.google.com/embed/reporting/1prV-6QHhexEG9u-"
+"nIMvvQISWgnUtZPPv/page/1M"
+msgstr ""
+
+#: classes/installer.php:83
+msgid "Demo Marketing Report"
+msgstr ""
+
+#: classes/installer.php:87
+msgctxt "URL Demo Search Console Report"
+msgid ""
+"https://datastudio.google.com/embed/"
+"reporting/1TELKZNOYeOHpkv9ODSQWY7a6DB1PNoNU/page/6zXD"
+msgstr ""
+
+#: classes/installer.php:88
+msgid "Demo Search Console Report"
+msgstr ""
+
+#: classes/installer.php:92
+msgctxt "URL Demo Ecommerce & Google Ads Dashboard"
+msgid ""
+"https://datastudio.google.com/embed/"
+"reporting/1Y1UXSy42IfCESUj02VifjfatJNtswldB/page/qlD"
+msgstr ""
+
+#: classes/installer.php:93
+msgid "Demo Ecommerce & Google Ads Dashboard"
+msgstr ""
+
+#: classes/installer.php:97
+msgctxt "URL Demo Purchase Funnel"
+msgid ""
+"https://datastudio.google.com/embed/reporting/19-"
+"chqd7aUG22UY1w4P1Ze_3hZAPX4UgA/page/MPTo"
+msgstr ""
+
+#: classes/installer.php:98
+msgid "Demo Purchase Funnel"
+msgstr ""
+
+#: classes/reportmanager.php:95
+msgctxt "Post Type General Name"
+msgid "Reports"
+msgstr ""
+
+#: classes/reportmanager.php:96
+msgctxt "Post Type Singular Name"
+msgid "Report"
+msgstr ""
+
+#: classes/reportmanager.php:97 classes/reportmanager.php:98
+msgid "BI Reports"
+msgstr ""
+
+#: classes/reportmanager.php:99
+msgid "Reports Archives"
+msgstr ""
+
+#: classes/reportmanager.php:100
+msgid "Report Attributes"
+msgstr ""
+
+#: classes/reportmanager.php:101
+msgid "Parent Report:"
+msgstr ""
+
+#: classes/reportmanager.php:102
+msgid "All Reports"
+msgstr ""
+
+#: classes/reportmanager.php:103
+msgid "Add New Report"
+msgstr ""
+
+#: classes/reportmanager.php:104
+msgid "Add New"
+msgstr ""
+
+#: classes/reportmanager.php:105
+msgid "New Report"
+msgstr ""
+
+#: classes/reportmanager.php:106
+msgid "Edit Report"
+msgstr ""
+
+#: classes/reportmanager.php:107
+msgid "Update Report"
+msgstr ""
+
+#: classes/reportmanager.php:108 classes/reportmanager.php:213
+msgid "View Report"
+msgstr ""
+
+#: classes/reportmanager.php:109
+msgid "View Reports"
+msgstr ""
+
+#: classes/reportmanager.php:110
+msgid "Search Reports"
+msgstr ""
+
+#: classes/reportmanager.php:111
+msgid "Not found"
+msgstr ""
+
+#: classes/reportmanager.php:112
+msgid "Not found in Trash"
+msgstr ""
+
+#: classes/reportmanager.php:113
+msgid "Featured Image"
+msgstr ""
+
+#: classes/reportmanager.php:114
+msgid "Set featured image"
+msgstr ""
+
+#: classes/reportmanager.php:115
+msgid "Remove featured image"
+msgstr ""
+
+#: classes/reportmanager.php:116
+msgid "Use as featured image"
+msgstr ""
+
+#: classes/reportmanager.php:117
+msgid "Insert into report"
+msgstr ""
+
+#: classes/reportmanager.php:118
+msgid "Uploaded to this reports"
+msgstr ""
+
+#: classes/reportmanager.php:119
+msgid "Reports list"
+msgstr ""
+
+#: classes/reportmanager.php:120
+msgid "Reports list navigation"
+msgstr ""
+
+#: classes/reportmanager.php:121
+msgid "Filter reports list"
+msgstr ""
+
+#: classes/reportmanager.php:124
+msgid "Report"
+msgstr ""
+
+#: classes/reportmanager.php:125
+msgid "Google Data Studio Reports"
+msgstr ""
+
+#: classes/reportmanager.php:269
+#, php-format
+msgid "Report updated. <a href=\"%s\">View report</a>"
+msgstr ""
+
+#: classes/reportmanager.php:270
+msgid "Custom field updated."
+msgstr ""
+
+#: classes/reportmanager.php:271
+msgid "Custom field deleted."
+msgstr ""
+
+#: classes/reportmanager.php:272
+msgid "Report updated."
+msgstr ""
+
+#: classes/reportmanager.php:273
+#, php-format
+msgid "Report restored to revision from %s"
+msgstr ""
+
+#: classes/reportmanager.php:274
+#, php-format
+msgid "Report published. <a href=\"%s\">View report</a>"
+msgstr ""
+
+#: classes/reportmanager.php:275
+msgid "Report saved."
+msgstr ""
+
+#: classes/reportmanager.php:276
+#, php-format
+msgid "Report submitted. <a target=\"_blank\" href=\"%s\">Preview report</a>"
+msgstr ""
+
+#: classes/reportmanager.php:277
+#, php-format
+msgid ""
+"Report scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview report</a>"
+msgstr ""
+
+#: classes/reportmanager.php:277
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: classes/reportmanager.php:278
+#, php-format
+msgid ""
+"Report draft updated. <a target=\"_blank\" href=\"%s\">Preview report</a>"
+msgstr ""
+
+#: classes/reportmanager.php:290
+msgid "Report Properties"
+msgstr ""
+
+#: classes/reportmanager.php:351 views/reportmanager/metaboxrender.php:8
+msgid "Report Type"
+msgstr ""
+
+#: classes/reportmanager.php:352
+msgid "Report Date"
+msgstr ""
+
+#: classes/reports/base.php:249
+msgid "Warning! Report URL is empty!"
+msgstr ""
+
+#: classes/reports/dashboardwidget.php:29
+msgid "Dashboard Widget Report"
+msgstr ""
+
+#: classes/reports/page.php:24
+msgid "Admin Page Report"
+msgstr ""
+
+#: classes/reports/welcome.php:25
+msgid "Dashboard Welcome Report"
+msgstr ""
+
+#: views/installer/shownotice.php:8
+msgid "Thank you for using Google Data Studio Reports For WordPress!"
+msgstr ""
+
+#: views/installer/shownotice.php:10
+msgid "Click"
+msgstr ""
+
+#: views/installer/shownotice.php:11
+msgid "here"
+msgstr ""
+
+#: views/installer/shownotice.php:12
+msgid "to install demo reports."
+msgstr ""
+
+#: views/reports/base/metaboxrender.php:10
+msgid "Report URL"
+msgstr ""
+
+#: views/reports/base/metaboxrender.php:15
+msgid "Report width"
+msgstr ""
+
+#: views/reports/base/metaboxrender.php:20
+msgid "Report height"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "IN BI For WP: Google Data Studio Reports For WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://ivannikitin-com.github.io/inbi4wp/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Adds any Google Data Studio reports to the WordPress admin"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ivan Nikitin & Co."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://ivannikitin.com/"
+msgstr ""

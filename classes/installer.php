@@ -26,10 +26,13 @@ class Installer
 	static public function activate()
 	{
 		// Check reports present in DB
-		$query = new WP_Query( array( 'post_type' => ReportManager::CPT ) );
+		$query = new WP_Query( array( 
+			'post_type'		=> ReportManager::CPT,
+			'post_status'	=> array( 'publish' ),
+		) );
 		
 		// If no reports show dialog for user
-		if ( $query->have_posts() )
+		if ( ! $query->have_posts() )
 		{
 			set_transient( self::FLAG, true, 12 * HOUR_IN_SECONDS );
 		}

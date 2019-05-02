@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: Google Data Studio Reports For WordPress
+ * Plugin Name: IN BI For WP: Google Data Studio Reports For WordPress
  * Plugin URI:  https://ivannikitin-com.github.io/inbi4wp/
- * Description: Placing any Google Data Studio reports in the admin WordPress
+ * Description: Adds any Google Data Studio reports to the WordPress admin
  * Version:     1.0
- * Author:      Ivan Nikitin
+ * Author:      Ivan Nikitin & Co.
  * Author URI:  https://ivannikitin.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html

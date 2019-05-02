@@ -15,7 +15,7 @@ class Plugin
 	/**
 	 * @const LANG Translations folder
 	 */
-	const LANG = 'languages';
+	const LANG = '/languages';
 	
     /**
      * @var Plugin
@@ -77,7 +77,7 @@ class Plugin
 	 */
 	public function loadTextDomain()
 	{
-		load_plugin_textdomain( self::TEXTDOMAIN, $this->dir . self::LANG );
+		load_plugin_textdomain( self::TEXTDOMAIN, false, basename( dirname( $this->file ) ) . self::LANG );
 	}
 	
 	/**
