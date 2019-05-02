@@ -80,4 +80,15 @@ class DashboardWidget extends Base
 		$report = new static( $args[ 'args' ] );
 		$report->reportRender();
 	}
+	
+	/**
+	 * Add new report
+	 * @param sgtring	$url		Report URL 	 
+	 * @param sgtring	$title		Report title
+	 * @return int post_id
+	 */	
+	static public function add( $url, $title )
+	{
+		return Base::addReport( $url, $title, '\\' . __CLASS__, Base::DEFAULT_WIDTH, self::DEFAULT_HEIGHT );
+	}	
 }

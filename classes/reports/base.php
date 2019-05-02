@@ -162,6 +162,28 @@ class Base
 		}
 		wp_localize_script( 'jquery', 'inbi4wp_reportsData', $reportsData );
 	}
+	
+	/**
+	 * Add new report
+	 * @param sgtring	$url		Report URL 	 
+	 * @param sgtring	$title		Report title	 
+	 * @param sgtring	$type		Report type 	 	 
+	 * @param sgtring	$width		Report width 	 
+	 * @param sgtring	$height		Report height 	 
+	 */	
+	static public function addReport( $url, $title, $type, $width, $height )
+	{
+		$post_id = wp_insert_post(  wp_slash( array(
+			'post_status'	=> 'publish',
+			'post_type'		=> ReportManager::CPT,
+			'post_title'	=> $title,
+			'post_author'   => get_current_user_id(),
+		) ) );
+		update_post_meta( $post_id, ReportManager::META_TYPE, $type );
+		update_post_meta( $post_id, self::META_WIDTH, $width );
+		update_post_meta( $post_id, self::META_HEIGHT, $height );
+		return $post_id;
+	}	
 
 	/**
 	 * Constructor

@@ -16,10 +16,11 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /* Pligin files */
 require( 'classes/plugin.php' );
 require( 'classes/reportmanager.php' );
+require( 'classes/installer.php' );
 require( 'classes/reports/base.php' );
 require( 'classes/reports/page.php' );
 require( 'classes/reports/dashboardwidget.php' );
 require( 'classes/reports/welcome.php' );
 
 /* Run plugin */
-\INBI4WP\Plugin::get( plugin_dir_path( __FILE__ ) );
+\INBI4WP\Plugin::get(  __FILE__ );

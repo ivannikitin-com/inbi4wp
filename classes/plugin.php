@@ -22,7 +22,6 @@ class Plugin
      */
     private static $instance;	
 	
-	
 	/**
 	 * Plugin folder
 	 * @var string
@@ -30,10 +29,22 @@ class Plugin
 	public $dir = '';
 	
 	/**
+	 * Plugin file
+	 * @var string
+	 */
+	private $file = '';	
+	
+	/**
 	 * Instance of ReportManager
 	 * @var string
 	 */
 	public $reportManager;	
+
+	/**
+	 * Instance of Installer
+	 * @var string
+	 */
+	private $installer;	
 
     /**
      * Gets the instance via lazy initialization (created on first usage)
@@ -50,13 +61,15 @@ class Plugin
 	
 	/**
 	 * Constructor
-	 * @param string	$pluginDir	Plugin Folder
+	 * @param string	$pluginFile	Plugin File
 	 */
-	private function __construct( $pluginDir )
+	private function __construct( $pluginFile )
 	{
-		$this->dir = $pluginDir;
+		$this->file = $pluginFile;
+		$this->dir = plugin_dir_path( $pluginFile );
 		add_action( 'plugins_loaded', array( $this, 'loadTextDomain' ) );
 		add_action( 'init', array( $this, 'init' ) );
+		register_activation_hook( $this->file, array( $this, 'activate' ) );
 	}
 	
 	/**
@@ -76,6 +89,15 @@ class Plugin
 		if( is_admin() )
 		{
 			$this->reportManager = new ReportManager();
+			$this->installer = new Installer();
 		}
 	}
+	
+	/**
+	 * Plugin activatation
+	 */
+	public function activate()
+	{
+		Installer::activate();
+	}	
 }
