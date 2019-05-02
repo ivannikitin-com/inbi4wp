@@ -4,7 +4,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Project-Id-Version: IN BI For WP: Google Data Studio Reports For WordPress\n"
 "POT-Creation-Date: 2019-05-02 15:15+0300\n"
-"PO-Revision-Date: 2019-05-02 15:34+0300\n"
+"PO-Revision-Date: 2019-05-02 17:14+0300\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,84 +23,78 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: classes/installer.php:72
-#, fuzzy
 msgctxt "URL Demo Welcome Site Stats"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1VBoRCoJSOUbTZECO68GC2CJxJb8Q51et/page/qDTo"
 msgstr ""
-"https://datastudio.google.com/embed/"
-"reporting/1VBoRCoJSOUbTZECO68GC2CJxJb8Q51et/page/qDTo"
+"https://datastudio.google.com/embed/reporting/1fufm-"
+"FRkppzA00jStZS5fvR45Qb5q0Kt/page/qDTo"
 
 #: classes/installer.php:73
 msgid "Demo Welcome Site Stats"
 msgstr "Демо Добро пожаловать Статистика сайта"
 
 #: classes/installer.php:77
-#, fuzzy
 msgctxt "URL Demo Site Usage Report"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1Hsn7UlMla3RpNWkkLb3Q-0VvZhHlvaGo/page/UGXo"
 msgstr ""
 "https://datastudio.google.com/embed/"
-"reporting/1Hsn7UlMla3RpNWkkLb3Q-0VvZhHlvaGo/page/UGXo"
+"reporting/1GseCAPDSPF3J9dKooKnHFfaIHRW7Ed7R/page/UGXo"
 
 #: classes/installer.php:78
 msgid "Demo Site Usage Report"
 msgstr "Демо Отчет об использовании сайта"
 
 #: classes/installer.php:82
-#, fuzzy
 msgctxt "URL Demo Marketing Report"
 msgid ""
 "https://datastudio.google.com/embed/reporting/1prV-6QHhexEG9u-"
 "nIMvvQISWgnUtZPPv/page/1M"
 msgstr ""
-"https://datastudio.google.com/embed/reporting/1prV-6QHhexEG9u-"
-"nIMvvQISWgnUtZPPv/page/1M"
+"https://datastudio.google.com/embed/"
+"reporting/1n6co2jT23LmM4cmavMYSV9U1uI8o6gQw/page/1M"
 
 #: classes/installer.php:83
 msgid "Demo Marketing Report"
 msgstr "Демо Маркетинговый отчет"
 
 #: classes/installer.php:87
-#, fuzzy
 msgctxt "URL Demo Search Console Report"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1TELKZNOYeOHpkv9ODSQWY7a6DB1PNoNU/page/6zXD"
 msgstr ""
 "https://datastudio.google.com/embed/"
-"reporting/1TELKZNOYeOHpkv9ODSQWY7a6DB1PNoNU/page/6zXD"
+"reporting/1bPKuZHKYZlpOY5szr4lAtgMUKPYFckIe/page/6zXD"
 
 #: classes/installer.php:88
 msgid "Demo Search Console Report"
 msgstr "Демо Отчет консоли поиска Google (SEO)"
 
 #: classes/installer.php:92
-#, fuzzy
 msgctxt "URL Demo Ecommerce & Google Ads Dashboard"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1Y1UXSy42IfCESUj02VifjfatJNtswldB/page/qlD"
 msgstr ""
 "https://datastudio.google.com/embed/"
-"reporting/1Y1UXSy42IfCESUj02VifjfatJNtswldB/page/qlD"
+"reporting/1sIY5e7I666sFzAzSz0emdDhqdgVpCaFh/page/qlD"
 
 #: classes/installer.php:93
 msgid "Demo Ecommerce & Google Ads Dashboard"
 msgstr "Демо Отчет по продажам и рекламе"
 
 #: classes/installer.php:97
-#, fuzzy
 msgctxt "URL Demo Purchase Funnel"
 msgid ""
 "https://datastudio.google.com/embed/reporting/19-"
 "chqd7aUG22UY1w4P1Ze_3hZAPX4UgA/page/MPTo"
 msgstr ""
-"https://datastudio.google.com/embed/reporting/19-"
-"chqd7aUG22UY1w4P1Ze_3hZAPX4UgA/page/MPTo"
+"https://datastudio.google.com/embed/"
+"reporting/19oFE5tUvyniikjD_T4Sc06_YMhXHVvhC/page/MPTo"
 
 #: classes/installer.php:98
 msgid "Demo Purchase Funnel"
