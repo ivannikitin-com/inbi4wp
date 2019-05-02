@@ -29,7 +29,7 @@ class Installer
 		$query = new WP_Query( array( 'post_type' => ReportManager::CPT ) );
 		
 		// If no reports show dialog for user
-		if ( true || ! $query->have_posts() )
+		if ( $query->have_posts() )
 		{
 			set_transient( self::FLAG, true, 12 * HOUR_IN_SECONDS );
 		}
@@ -96,6 +96,9 @@ class Installer
 		Reports\DashboardWidget::add(
 			_x( 'https://datastudio.google.com/embed/reporting/19-chqd7aUG22UY1w4P1Ze_3hZAPX4UgA/page/MPTo', 'URL Demo Purchase Funnel', Plugin::TEXTDOMAIN ),
 			__( 'Demo Purchase Funnel', Plugin::TEXTDOMAIN )
-		);				
+		);
+
+		delete_transient( self::FLAG );
+		wp_safe_redirect( $this->adminURL );
 	}		
 }

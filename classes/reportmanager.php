@@ -151,6 +151,16 @@ class ReportManager
 	{
 		return get_post_type( $id ) == self::CPT;
 	}
+	
+	/**
+	 * Check the type of report class
+	 * @param string $type	Report Class
+	 * @return bool
+	 */
+	private function isTypeCorrent( $type )
+	{
+		return array_key_exists( $type, $this->reportTypes );
+	}	
 
 	/**
 	 * Returns the instance of Report Object
@@ -173,7 +183,7 @@ class ReportManager
 		if ( ! empty( $id ) )
 		{
 			$class = get_post_meta( $id, self::META_TYPE, true );
-			if ( !empty( $class ) && array_key_exists( $class, $this->reportTypes ) )
+			if ( ! empty( $class ) && $this->isTypeCorrent( $class ) )
 			{
 				return new $class( $id );
 			}			
@@ -196,13 +206,13 @@ class ReportManager
 		unset( $actions[ 'inline hide-if-no-js' ] );
 		
 		$reportType = get_post_meta( $post->ID, self::META_TYPE, true );
-		try
+		if ( $this->isTypeCorrent( $reportType ) )
 		{
 			$actions[ 'view' ] = '<a href="' . $reportType::getURL( $post->ID ) . '" rel="bookmark"' . 
 				'aria-label="' . esc_attr( $post->title ) .  '">' . 
 				esc_html__( 'View Report', Plugin::TEXTDOMAIN ) . '</a>';
 		}
-		catch ( \Extension $ex)
+		else
 		{
 			unset( $actions[ 'view' ] );
 		}
@@ -223,7 +233,7 @@ class ReportManager
 			return $permalink;
 		
 		$reportType = get_post_meta( $post->ID, self::META_TYPE, true );
-		return esc_url( $reportType::getURL( $post->ID ) );
+		return ($this->isTypeCorrent( $reportType ) ) ? esc_url( $reportType::getURL( $post->ID ) ) : $permalink;
 	}
 	
 	/**
@@ -240,11 +250,16 @@ class ReportManager
 			return $messages;
 
 		// Read report type
-		$reportType = get_post_meta( $post_ID, self::META_TYPE, true );
+		$reportType = get_post_meta( $post_ID, self::META_TYPE, true );		
 		
 		// If this is new report...
 		if ( empty( $reportType ) )
 			return $messages;
+		
+		if ( ! $this->isTypeCorrent( $reportType ) )
+		{
+			return $messages;
+		}
 		
 		// Report URL
 		$url = esc_url( $reportType::getURL( $post_ID ) );	

@@ -179,9 +179,10 @@ class Base
 			'post_title'	=> $title,
 			'post_author'   => get_current_user_id(),
 		) ) );
-		update_post_meta( $post_id, ReportManager::META_TYPE, $type );
-		update_post_meta( $post_id, self::META_WIDTH, $width );
-		update_post_meta( $post_id, self::META_HEIGHT, $height );
+		update_post_meta( $post_id, ReportManager::META_TYPE, addslashes( $type ) );
+		update_post_meta( $post_id, self::META_URL, sanitize_text_field( $url ) );
+		update_post_meta( $post_id, self::META_WIDTH, sanitize_text_field( $width ) );
+		update_post_meta( $post_id, self::META_HEIGHT, sanitize_text_field( $height ) );
 		return $post_id;
 	}	
 
