@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: IN BI For WP: Google Data Studio Reports For WordPress\n"
-"POT-Creation-Date: 2019-05-02 15:15+0300\n"
+"POT-Creation-Date: 2019-05-03 09:24+0300\n"
 "PO-Revision-Date: 2019-05-02 15:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,70 +21,81 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: classes/installer.php:72
+#: classes/installer.php:75
 msgctxt "URL Demo Welcome Site Stats"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1VBoRCoJSOUbTZECO68GC2CJxJb8Q51et/page/qDTo"
 msgstr ""
 
-#: classes/installer.php:73
+#: classes/installer.php:76
 msgid "Demo Welcome Site Stats"
 msgstr ""
 
-#: classes/installer.php:77
+#: classes/installer.php:80
 msgctxt "URL Demo Site Usage Report"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1Hsn7UlMla3RpNWkkLb3Q-0VvZhHlvaGo/page/UGXo"
 msgstr ""
 
-#: classes/installer.php:78
+#: classes/installer.php:81
 msgid "Demo Site Usage Report"
 msgstr ""
 
-#: classes/installer.php:82
+#: classes/installer.php:85
 msgctxt "URL Demo Marketing Report"
 msgid ""
 "https://datastudio.google.com/embed/reporting/1prV-6QHhexEG9u-"
 "nIMvvQISWgnUtZPPv/page/1M"
 msgstr ""
 
-#: classes/installer.php:83
+#: classes/installer.php:86
 msgid "Demo Marketing Report"
 msgstr ""
 
-#: classes/installer.php:87
+#: classes/installer.php:90
 msgctxt "URL Demo Search Console Report"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1TELKZNOYeOHpkv9ODSQWY7a6DB1PNoNU/page/6zXD"
 msgstr ""
 
-#: classes/installer.php:88
+#: classes/installer.php:91
 msgid "Demo Search Console Report"
 msgstr ""
 
-#: classes/installer.php:92
+#: classes/installer.php:95
 msgctxt "URL Demo Ecommerce & Google Ads Dashboard"
 msgid ""
 "https://datastudio.google.com/embed/"
 "reporting/1Y1UXSy42IfCESUj02VifjfatJNtswldB/page/qlD"
 msgstr ""
 
-#: classes/installer.php:93
+#: classes/installer.php:96
 msgid "Demo Ecommerce & Google Ads Dashboard"
 msgstr ""
 
-#: classes/installer.php:97
+#: classes/installer.php:100
 msgctxt "URL Demo Purchase Funnel"
 msgid ""
 "https://datastudio.google.com/embed/reporting/19-"
 "chqd7aUG22UY1w4P1Ze_3hZAPX4UgA/page/MPTo"
 msgstr ""
 
-#: classes/installer.php:98
+#: classes/installer.php:101
 msgid "Demo Purchase Funnel"
+msgstr ""
+
+#: classes/installer.php:105
+msgctxt "URL Discover Google Data Studio"
+msgid ""
+"https://datastudio.google.com/embed/reporting/0B2lgFyX5qOqhbFE5RllsdFdtMXc/"
+"page/0DlG?s=oVuik8AnEcw"
+msgstr ""
+
+#: classes/installer.php:106
+msgid "Discover Google Data Studio"
 msgstr ""
 
 #: classes/reportmanager.php:95
@@ -311,7 +322,7 @@ msgid "Report height"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "IN BI For WP: Google Data Studio Reports For WordPress"
+msgid "INBI4WP"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -319,7 +330,7 @@ msgid "https://ivannikitin-com.github.io/inbi4wp/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Adds any Google Data Studio reports to the WordPress admin"
+msgid "Adds any Google Data Studio Reports to the WordPress admin"
 msgstr ""
 
 #. Author of the plugin/theme

@@ -100,6 +100,11 @@ class Installer
 			_x( 'https://datastudio.google.com/embed/reporting/19-chqd7aUG22UY1w4P1Ze_3hZAPX4UgA/page/MPTo', 'URL Demo Purchase Funnel', Plugin::TEXTDOMAIN ),
 			__( 'Demo Purchase Funnel', Plugin::TEXTDOMAIN )
 		);
+		
+		Reports\Page::add(
+			_x( 'https://datastudio.google.com/embed/reporting/0B2lgFyX5qOqhbFE5RllsdFdtMXc/page/0DlG?s=oVuik8AnEcw', 'URL Discover Google Data Studio', Plugin::TEXTDOMAIN ),
+			__( 'Discover Google Data Studio', Plugin::TEXTDOMAIN )
+		);		
 
 		delete_transient( self::FLAG );
 		wp_safe_redirect( $this->adminURL );
