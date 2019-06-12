@@ -50,7 +50,7 @@ class Plugin
      * Gets the instance via lazy initialization (created on first usage)
 	 * @param string $pluginDir	plugin folder. Must be specified at the first call ! 
      */
-    public static function get( $pluginDir = '' ): Plugin
+    public static function get( $pluginDir = '' )
     {
         if (null === static::$instance) {
             static::$instance = new static( $pluginDir );
