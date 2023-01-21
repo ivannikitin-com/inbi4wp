@@ -15,7 +15,7 @@ class ReportManager
 	/**
 	 * @const META_TYPE Meta Field "Type of Report"
 	 */
-	const META_TYPE = '_inbi4wp_report_type';
+	const META_TYPE = '_inbi4wp_report';
 
 	/**
 	 * @const Nonce field
@@ -137,12 +137,8 @@ class ReportManager
 			'has_archive'           => true,
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
-			'capability_type'       => self::CPT,
-			'map_meta_cap'          => true, 
-			'capabilities'          => array(
-				'read' => 'read',
-				'read_private_posts' => 'read_inbi4wp_report_types',
-			)
+			'capability_type'       => array( self::CPT, self::CPT . 's'),
+			'map_meta_cap'          => true
 		);
 		register_post_type( self::CPT, $args );
 	}

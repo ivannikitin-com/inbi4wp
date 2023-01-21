@@ -11,5 +11,6 @@
 * [https://ivannikitin-com.github.io/inbi4wp/](https://ivannikitin-com.github.io/inbi4wp/)
 
 ## История изменений
+* 21.01.2023    Коррекция прав доступа к отчетам
 * 02.05.2019	Готов основной функционал плагина.
 

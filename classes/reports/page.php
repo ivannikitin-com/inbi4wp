@@ -52,15 +52,17 @@ class Page extends Base
 	 */
 	static public function showReports()
 	{
+		$menuOrder = 0;
 		foreach( Base::getAllReport( __CLASS__ ) as $report ) 
 		{
 			add_submenu_page(
 				'edit.php?post_type=' . ReportManager::CPT,
 				$report['title'],
 				$report['title'],
-				'manage_options',
+				'read',
 				self::SLUG . $report['id'],
-				__CLASS__ . '::showReport'
+				__CLASS__ . '::showReport',
+				$menuOrder++
 			);
 		}
 	}
