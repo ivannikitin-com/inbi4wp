@@ -124,7 +124,7 @@ class ReportManager
 			'label'                 => __( 'Report', Plugin::TEXTDOMAIN ),
 			'description'           => __( 'Google Data Studio Reports', Plugin::TEXTDOMAIN ),
 			'labels'                => $labels,
-			'supports'              => array( 'title' ),
+			'supports'              => array( 'title', 'author' ),
 			'hierarchical'          => false,
 			'public'                => false,
 			'show_ui'               => true,
@@ -137,7 +137,12 @@ class ReportManager
 			'has_archive'           => true,
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
-			'capability_type'       => 'page',
+			'capability_type'       => self::CPT,
+			'map_meta_cap'          => true, 
+			'capabilities'          => array(
+				'read' => 'read',
+				'read_private_posts' => 'read_inbi4wp_report_types',
+			)
 		);
 		register_post_type( self::CPT, $args );
 	}
