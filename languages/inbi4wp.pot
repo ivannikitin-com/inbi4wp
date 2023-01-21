@@ -1,16 +1,16 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: IN BI For WP: Google Data Studio Reports For WordPress\n"
-"POT-Creation-Date: 2019-05-03 09:24+0300\n"
+"POT-Creation-Date: 2023-01-21 19:02+0300\n"
 "PO-Revision-Date: 2019-05-02 15:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: inbi4wp.php\n"
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Update Report"
 msgstr ""
 
-#: classes/reportmanager.php:108 classes/reportmanager.php:213
+#: classes/reportmanager.php:108 classes/reportmanager.php:214
 msgid "View Report"
 msgstr ""
 
@@ -212,68 +212,68 @@ msgstr ""
 msgid "Google Data Studio Reports"
 msgstr ""
 
-#: classes/reportmanager.php:269
+#: classes/reportmanager.php:270
 #, php-format
 msgid "Report updated. <a href=\"%s\">View report</a>"
 msgstr ""
 
-#: classes/reportmanager.php:270
+#: classes/reportmanager.php:271
 msgid "Custom field updated."
 msgstr ""
 
-#: classes/reportmanager.php:271
+#: classes/reportmanager.php:272
 msgid "Custom field deleted."
 msgstr ""
 
-#: classes/reportmanager.php:272
-msgid "Report updated."
-msgstr ""
-
 #: classes/reportmanager.php:273
-#, php-format
-msgid "Report restored to revision from %s"
+msgid "Report updated."
 msgstr ""
 
 #: classes/reportmanager.php:274
 #, php-format
-msgid "Report published. <a href=\"%s\">View report</a>"
+msgid "Report restored to revision from %s"
 msgstr ""
 
 #: classes/reportmanager.php:275
-msgid "Report saved."
+#, php-format
+msgid "Report published. <a href=\"%s\">View report</a>"
 msgstr ""
 
 #: classes/reportmanager.php:276
+msgid "Report saved."
+msgstr ""
+
+#: classes/reportmanager.php:277
 #, php-format
 msgid "Report submitted. <a target=\"_blank\" href=\"%s\">Preview report</a>"
-msgstr ""
-
-#: classes/reportmanager.php:277
-#, php-format
-msgid ""
-"Report scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
-"\">Preview report</a>"
-msgstr ""
-
-#: classes/reportmanager.php:277
-msgid "M j, Y @ G:i"
 msgstr ""
 
 #: classes/reportmanager.php:278
 #, php-format
 msgid ""
+"Report scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" "
+"href=\"%2$s\">Preview report</a>"
+msgstr ""
+
+#: classes/reportmanager.php:278
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: classes/reportmanager.php:279
+#, php-format
+msgid ""
 "Report draft updated. <a target=\"_blank\" href=\"%s\">Preview report</a>"
 msgstr ""
 
-#: classes/reportmanager.php:290
+#: classes/reportmanager.php:291
 msgid "Report Properties"
 msgstr ""
 
-#: classes/reportmanager.php:351 views/reportmanager/metaboxrender.php:8
+#: classes/reportmanager.php:352 views/reportmanager/metaboxrender.php:8
 msgid "Report Type"
 msgstr ""
 
-#: classes/reportmanager.php:352
+#: classes/reportmanager.php:353
 msgid "Report Date"
 msgstr ""
 
