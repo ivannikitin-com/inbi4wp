@@ -95,18 +95,21 @@ class Base
 	static public function getAllReport( $reportType )
 	{
 		// Add \ in the begin of $reportType
-		if ( $reportType{0} !== '\\' )
+		if ( mb_substr( $reportType, 0, 1 ) !== '\\' ) {
 			$reportType = '\\' . $reportType;
-		
+		}
+	
 		// Check the cache
 		$reports = wp_cache_get( self::CACHE_REPORTS );
-		if ( $reports && isset( $reports[ $reportType ] ) )
-			return $reports[ $reportType ];		
-		
+		if ( $reports && isset( $reports[ $reportType ] ) ) {
+			return $reports[ $reportType ];
+		}
+
 		// New report types array
-		if ( ! is_array( $reports ) )
+		if ( ! is_array( $reports ) ) {
 			$reports = array();
-		
+		}
+
 		// WP_Query arguments
 		$args = array(
 			'post_type'		=> array( ReportManager::CPT ),
